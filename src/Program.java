@@ -59,19 +59,35 @@ public class Program {
         double media = somaNotas / totalAlunos;
 
         try (BufferedWriter bw = new BufferedWriter(new FileWriter(caminhoSaida))) {
-            bw.write("Total de alunos: " + totalAlunos);
+            bw.write("Total De Alunos;Aprovados;Reprovados;Menor Nota;Maior Nota;Media Geral");
             bw.newLine();
-            bw.write("Aprovados: " + aprovados);
-            bw.newLine();
-            bw.write("Reprovados: " + reprovados);
-            bw.newLine();
-            bw.write("Menor nota: " + menorNota);
-            bw.newLine();
-            bw.write("Maior nota: " + maiorNota);
-            bw.newLine();
-            bw.write("Media geral: " + media);
+            bw.write(totalAlunos + ";" + aprovados + ";" + reprovados + ";" + menorNota + ";" + maiorNota + ";" + String.format("%.2f", media));
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+}
+
+class Aluno {
+    private String matricula;
+    private String nome;
+    private double nota;
+
+    public Aluno(String matricula, String nome, double nota) {
+        this.matricula = matricula;
+        this.nome = nome;
+        this.nota = nota;
+    }
+
+    public String getMatricula() {
+        return matricula;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public double getNota() {
+        return nota;
     }
 }
